@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_students"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="@string/title_students" />
+
+    <item
+        android:id="@+id/navigation_testing"
+        android:icon="@drawable/ic_baseline_test_24"
+        android:title="@string/title_testing" />
+
+    <item
+        android:id="@+id/navigation_results"
+        android:icon="@drawable/ic_baseline_result_24"
+        android:title="@string/title_results" />
+
+</menu>

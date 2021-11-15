@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_students">
+
+    <fragment
+        android:id="@+id/navigation_students"
+        android:name="curtin.edu.mathtest.ui.students.StudentsFragment"
+        android:label="@string/title_students"
+        tools:layout="@layout/fragment_students" >
+        <action
+            android:id="@+id/action_navigation_students_to_navigation_addContact"
+            app:destination="@id/navigation_addContact" />
+        <action
+            android:id="@+id/action_navigation_students_to_studentDetailsScrollingFragment"
+            app:destination="@id/studentDetailsScrollingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_testing"
+        android:name="curtin.edu.mathtest.ui.testing.TestingFragment"
+        android:label="@string/title_testing"
+        tools:layout="@layout/fragment_testing" >
+        <action
+            android:id="@+id/action_navigation_testing_to_conductTestFragment"
+            app:destination="@id/conductTestFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_results"
+        android:name="curtin.edu.mathtest.ui.results.ResultsFragment"
+        android:label="@string/title_results"
+        tools:layout="@layout/fragment_results" />
+
+    <fragment
+        android:id="@+id/navigation_addContact"
+        android:name="curtin.edu.mathtest.ui.students.ScrollingFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_scrolling" >
+        <argument
+            android:name="title"
+            app:argType="string"/>
+        <argument
+            android:name="student_id"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+        <action
+            android:id="@+id/action_navigation_addContact_to_navigation_students"
+            app:destination="@id/navigation_students"
+            app:popUpTo="@id/navigation_students"
+            app:popUpToInclusive="true"></action>
+        <action
+            android:id="@+id/action_navigation_addContact_to_selectImageSourceFragment"
+            app:destination="@id/selectImageSourceFragment" />
+        <argument
+            android:name="img"
+            app:argType="curtin.edu.mathtest.database.Image" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentDetailsScrollingFragment"
+        android:name="curtin.edu.mathtest.ui.students.StudentDetailsScrollingFragment"
+        android:label="Student Details"
+        tools:layout="@layout/fragment_student_details_scrolling" >
+        <argument
+            android:name="studentID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_studentDetailsScrollingFragment_to_navigation_addContact"
+            app:destination="@id/navigation_addContact" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectImageSourceFragment"
+        android:name="curtin.edu.mathtest.ui.students.SelectImageSourceFragment"
+        android:label="Select Image"
+        tools:layout="@layout/fragment_select_image_source" >
+        <argument
+            android:name="studentId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_selectImageSourceFragment_to_navigation_addContact"
+            app:destination="@id/navigation_addContact" />
+        <argument
+            android:name="img"
+            app:argType="curtin.edu.mathtest.database.Image" />
+        <action
+            android:id="@+id/action_selectImageSourceFragment_to_pixabayImagesFragment"
+            app:destination="@id/pixabayImagesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixabayImagesFragment"
+        android:name="curtin.edu.mathtest.ui.students.PixabayImagesFragment"
+        android:label="Browse Pixabay"
+        tools:layout="@layout/fragment_image_list" >
+        <argument
+            android:name="studentId"
+            app:argType="integer"/>
+        <argument
+            android:name="img"
+            app:argType="curtin.edu.mathtest.database.Image" />
+        <action
+            android:id="@+id/action_pixabayImagesFragment_to_selectImageSourceFragment"
+            app:destination="@id/selectImageSourceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/conductTestFragment"
+        android:name="curtin.edu.mathtest.ui.testing.ConductTestFragment"
+        android:label="fragment_conduct_test"
+        tools:layout="@layout/fragment_conduct_test" >
+        <argument
+            android:name="student_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_conductTestFragment_to_navigation_testing"
+            app:destination="@id/navigation_testing" />
+    </fragment>
+
+
+</navigation>
